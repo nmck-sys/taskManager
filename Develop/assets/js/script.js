@@ -4,9 +4,8 @@ let nextId = JSON.parse(localStorage.getItem("nextId"));
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
-    return generate();
+    return nextID;
 }
-const taskID = generateTaskId();
 
 // Todo: create a function to create a task card
 function createTaskCard(myID, Title, Date, Description) {
@@ -32,17 +31,6 @@ function createTaskCard(myID, Title, Date, Description) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-const taskContainer = document.getElementById('task-container');
-taskContainer.innerHTML = '';
-if (taskList) {
-    taskList.forEach(task => {
-        const taskCard = createTaskCard(task.id, task.Title, task.Date, task.Description);
-        taskContainer.appendChild(taskCard);
-    }); {
-        
-    };
-}
-
 }
 
 // Todo: create a function to handle adding a new task
@@ -62,10 +50,5 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
-    const addButton = document.getElementById('addButton');
-        if (addButton) {
-            addButton.addEventListener('click', () => {
-                console.log('button works');
-            });
-        };
-    });
+
+});
