@@ -9,9 +9,13 @@ function generateTaskId() {
 const taskID = generateTaskId();
 
 // Todo: create a function to create a task card
-function createTaskCard(Title, Date, Description) {
+function createTaskCard(myID, Title, Date, Description) {
     const taskCard = document.createElement('div');
     taskCard.className = 'taskCard';
+    taskCard.draggable = true;
+    taskCard.dataset.id = myID
+
+
     const CardTitle = document.createElement('h3');
     CardTitle.textContent = Title;
     const dueDate = document.createElement('h4');
@@ -28,6 +32,16 @@ function createTaskCard(Title, Date, Description) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
+const taskContainer = document.getElementById('task-container');
+taskContainer.innerHTML = '';
+if (taskList) {
+    taskList.forEach(task => {
+        const taskCard = createTaskCard(task.id, task.Title, task.Date, task.Description);
+        taskContainer.appendChild(taskCard);
+    }); {
+        
+    };
+}
 
 }
 
@@ -48,5 +62,10 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
-
-});
+    const addButton = document.getElementById('addButton');
+        if (addButton) {
+            addButton.addEventListener('click', () => {
+                console.log('button works');
+            });
+        };
+    });
