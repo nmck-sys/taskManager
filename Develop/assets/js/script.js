@@ -1,6 +1,6 @@
 // Retrieve tasks and nextId from localStorage
-let taskList = JSON.parse(localStorage.getItem("tasks"));
-let nextId = JSON.parse(localStorage.getItem("nextId"));
+let taskList = JSON.parse(localStorage.getItem("tasks")) || [];
+let nextId = JSON.parse(localStorage.getItem("nextId")) || 1;
 
 // Todo: create a function to generate a unique task id
 function generateTaskId() {
@@ -33,9 +33,9 @@ function createTaskCard(myID, Title, Date, Description) {
 
 // Todo: create a function to render the task list and make cards draggable
 function renderTaskList() {
-    const lists = ['todo', 'in-progress', 'done'];
-    lanes.array.forEach(lists => {
-        const taskContainer = document.getElementById();
+    const lists = ['to-do', 'in-progress', 'done'];
+    lists.forEach(lane => {
+        const taskContainer = document.getElementById(lane + '-cards');
         taskContainer.innerHTML = '';
         const filteredTasks = taskList.filter(task => task.status === lane);
         filteredTasks.forEach(task => {
@@ -61,7 +61,7 @@ function renderTaskList() {
 function handleAddTask(event){
     event.preventDefault();
 
-    const Title = document.getElementById('taksTitle').value;
+    const Title = document.getElementById('taskTitle').value;
     const Date = document.getElementById('taskDate').value;
     const Description = document.getElementById('taskDescription').value;
     const status = 'todo';
@@ -89,7 +89,7 @@ function handleDeleteTask(taskID){
 // Todo: create a function to handle dropping a task into a new status lane
 function handleDrop(event, ui) {
     const taskId = $(ui.item).data('id');
-    const dropnewStatus = ui.item.closest('card-body').attr('id').replace('-cards', '');
+    const dropnewStatus = ui.item.closest('.card-body').attr('id').replace('-cards', '');
     const task = taskList.find(task => task.id === taskId);
     if (task) {
         task.status = dropnewStatus;
@@ -99,9 +99,11 @@ function handleDrop(event, ui) {
 
 // Todo: when the page loads, render the task list, add event listeners, make lanes droppable, and make the due date field a date picker
 $(document).ready(function () {
-$("taskDate").datepicker();
+$("#taskDate").datepicker({
+    dateFormat: "yy-mm-dd"
+});
 $('#addButton').on('click', () => {
-    $('formModal').modal('show');
+    $('#formModal').modal('show');
 });
 $('#taskForm').on('submit', handleAddTask);
 renderTaskList();
