@@ -64,7 +64,7 @@ function handleAddTask(event){
     const Title = document.getElementById('taskTitle').value;
     const Date = document.getElementById('taskDate').value;
     const Description = document.getElementById('taskDescription').value;
-    const status = 'todo';
+    const status = 'to-do';
 
     const addnewTask = {
         id: generateTaskId(),
