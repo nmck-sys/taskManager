@@ -1,16 +1,32 @@
 body {
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-  }
-  
-  .swim-lanes {
-    min-height: 60vh;
-  }
-  
-  .task-card {
-    margin: 0 auto;
-  }
-  
-  .task-card:hover {
-    cursor: grab;
-  }
+  font-family: 'Open Sans', sans-serif;
+  font-size: 16px;
+}
+
+.swim-lanes {
+  border: 2px dashed #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  min-height: 200px;
+  background-color: #f9f9f9;
+}
+
+.task-card {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+  margin: 10px;
+  background-color: #fff;
+  cursor: move;
+}
+
+.task-card:hover {
+  border-color: #66afe9;
+  background-color: #e6f7ff;
+}
+
+/* Highlight lane when a card is dragged over it */
+.lane-hover {
+  border-color: #66afe9;
+  background-color: #e6f7ff;
+}
